@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditri's Portfolio</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: hsl(0, 0%, 0%); /* Dark background color */
+            color: #f5f5f5; /* Light text color */
+        }
+        header {
+            background-color: hwb(0 67% 32%);
+            color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #000000; 
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: hsl(0, 0%, 0%);
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .intro {
+            background: hsl(0, 0%, 0%); /* Black background for intro section */
+            color: #fff; /* White text color for intro section */
+            padding: 60px 20px;
+            text-align: center;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .intro h2 {
+            margin: 0;
+            font-size: 48px; /* Larger font size */
+        }
+        .intro .box {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #9d5f8f; /* Orange border */
+            display: inline-block;
+            font-size: 24px; /* Larger font size for the box text */
+            background-color: #9d5f8f;
+        }
+        .intro .social-links {
+            margin-top: 20px;
+        }
+        .intro .social-links a {
+            color: #9d5f8f; /* Orange color for links */
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 20px; /* Larger font size for links */
+        }
+        .about {
+            background: hwb(0 67% 32%); /* Darker background for sections */
+            margin: 20px 0;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(149, 149, 149, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        .about img {
+            border-radius: 5px;
+            width: 200px; /* Image size */
+            height: 300px; /* Image size */
+            margin-right: 20px;
+        }
+        .about p {
+            font-size: 1.2em; /* Increased text size */
+            line-height: 1.5; /* Improved readability */
+            margin: 0;
+        }
+        .about .social-links {
+            margin-top: 20px;
+        }
+        .about .social-links a {
+            color: #9d5f8f; /* Orange color for links */
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        .skills, .projects {
+            background: hwb(0 67% 32%); /* Darker background for sections */
+            margin: 20px 0;
+            padding: 30px; /* Increased padding */
+            border-radius: 5px;
+            box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
+        }
+        .skills ul, .projects ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .skills ul li, .projects ul li {
+            background: hsl(0, 0%, 0%)3; /* Darker background for items */
+            margin: 10px 0;
+            padding: 15px; /* Increased padding */
+            border-radius: 5px;
+        }
+        
+        .call-to-action {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: hsl(0, 0%, 0%);
+            border-radius: 5px;
+        }
+        .call-to-action h2 {
+            font-size: 3em;
+            color: #9d5f8f; /* Orange color */
+            margin: 0;
+        }
+        .call-to-action p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .call-to-action a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 10px;
+        }
+        footer {
+            background-color: hsl(0, 0%, 0%);
+            color: #f5f5f5;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .project-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .project-container {
+            display: flex;
+            align-items: center;
+            flex: 1 1 calc(50% - 20px);
+            background-color:  hsl(0, 0%, 0%); /* Light background for contrast */
+            padding: 15px;
+            border-radius: 5px;
+            gap: 20px; /* Space between image and text */
+            margin-bottom: 40px; /* Space between projects */
+        }
+        .project-image-container {
+            flex: 1;
+            max-width: 50%;
+        }
+        .project-image {
+            width: 100%;
+            
+            flex: 1;
+         
+            height: auto;
+            border-radius: 5px;
+        }
+        .project-text {
+            flex: 1;
+            max-width: 50%;
+        }
+        .project-text h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .project-text p {
+            margin: 10px 0 0 0;
+        }
+        .project-item img {
+            width: 100%;
+            height: auto; /* Shorter height for project images */
+            border-radius: 5px;
+            object-fit: cover; /* Ensures the image covers the area */
+        }
+        .project-item a {
+            color: #9d5f8f; /* Orange color for links */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aditri Paweria</h1>
+        <nav>
+            <a href="#about">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="intro">
+            <h2>Hi, I'm Aditri!</h2>
+            <div class="box">Computer Science Student</div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/aditri-paweria-91265a258/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/aditripaweria" target="_blank">GitHub</a>
+                <a href="https://www.instagram.com/aditripaweria/" target="_blank">Instagram</a>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <img src="img.jpg" alt="Aditri Paweria">
+            <div>
+                <p>As a Computer Science and Design student at IIIT Delhi, I am passionate about blending my technical expertise with a keen interest in UI/UX design. Eager to explore the intersection of technology and user experience, I bring a dynamic skill set in programming and design, embodying a commitment to creating intuitive and visually compelling solutions that enhance user interactions.</p>
+            </div>
+        </section>
+        <section id="skills" class="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>UI/UX Design</li>
+                <li>Web Development</li>
+                <li>Programming (Python, JavaScript)</li>
+                <li>Graphic Design</li>
+            </ul>
+        </section>
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+            <div class="project-item">
+                <div class="project-container">
+                    <div class="project-image-container">
+                        <a href="https://github.com/SanyamBK/DBMS-Project--StyleU" target="_blank">
+                            <img class="project-image" src="Online-Clothing-Store.jpg" alt="Project 1">
+                        </a>
+                    </div>
+                    <div class="project-text">
+                        <h3>StyleU: Online Clothing Store</h3>
+                        <p>Developed a comprehensive shopping application for buying clothes, designing and implementing the database using MySQL to handle data management, including inventory, user information, and order processing. Created a user-friendly interface using HTML, CSS to ensure a seamless shopping experience with features like product browsing, searching, and user authentication. Managed both backend and frontend development, ensuring smooth integration and functionality across the platform, showcasing skills in database design, data management, full-stack development, user interface design, and problem-solving.</p>
+                    </div>
+                </div>
+            
+                <div class="project-container">
+                    <div class="project-image-container">
+                        <a href="https://github.com/aditripaweria/project2" target="_blank">
+                            <img class="project-image" src="Study from STEADY.png" alt="Project 2">
+                        </a>
+                    </div>
+                    <div class="project-text">
+                        <h3>STEADY: E-Learning Platform for College Students</h3>
+                        <p>Developed an online studying platform, providing a range of courses and video lectures for college students. Designed a responsive and user-friendly frontend interface using HTML and CSS, ensuring smooth navigation and accessibility across devices. Implemented features such as course browsing, video playback, and subscription management. Focused on creating an intuitive user experience with a clean and organized layout. This project showcased skills in frontend development, user interface design, and web design principles.</p>
+                    </div>
+                </div>
+            
+                <div class="project-container">
+                    <div class="project-image-container">
+                        <a href="https://github.com/aditripaweria/ap-project" target="_blank">
+                            <img class="project-image" src="s.png" alt="Project 3">
+                        </a>
+                    </div>
+                    <div class="project-text">
+                        <h3>Lost in Space Game</h3>
+                        <p>Developed an interactive JavaFX-based game utilizing animation and event handling, challenging players to navigate a character across dynamic pillars while collecting gems. Implemented features such as character movement, stick creation, gem collection, and game state management for an engaging user experience.</p>
+                    </div>
+                </div>
+            
+                <div class="project-container">
+                    <div class="project-image-container">
+                        <a href="https://github.com/aditripaweria/project4" target="_blank">
+                            <img class="project-image" src="project4.jpg" alt="Project 4">
+                        </a>
+                    </div>
+                    <div class="project-text">
+                        <h3>Project 4</h3>
+                        <p>Description of your project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="call-to-action">
+            <h2>LET'S <span style="font-weight: normal;"></span> WORK</h2>
+            <p>Contact: aditri22027@iiitd.ac.in
+        </section>
+    </div>
+</body>
+</html>
